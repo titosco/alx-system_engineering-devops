@@ -1,0 +1,89 @@
+Infrastructure Design:
+
+Server 1 (Web Server):
+Nginx is installed to handle HTTP requests and serve static content.
+Application files are stored locally.
+
+Server 2 (Application Server):
+The application server runs the website's dynamic code and interacts with the database.
+It communicates with the web server to process requests.
+
+Server 3 (Database):
+MySQL is set up to store and manage the website's data.
+
+Load Balancer (HAproxy):
+HAproxy is added to distribute incoming requests across the web and application servers.
+This enhances performance, ensures high availability, and avoids overloading a single server.
+
+Active-Active Setup:
+The load balancer is set up for an Active-Active configuration.
+In an Active-Active setup, all servers actively handle requests simultaneously, distributing the load evenly.
+
+Database Primary-Replica Cluster:
+
+Primary-Replica (Master-Slave) Cluster:
+Configured for high availability and data redundancy.
+The primary node (master) is responsible for both read and write operations.
+Replica nodes (slaves) replicate data from the primary and handle read operations, improving read scalability.
+
+Difference Between Primary and Replica:
+The primary node handles write operations, ensuring data consistency.
+Replica nodes handle read operations, distributing the read load and improving overall performance.
+Certainly, let's design a three-server web infrastructure for www.foobar.com with the specified requirements.
+
+Infrastructure Design:
+
+Server 1 (Web Server):
+Nginx is installed to handle HTTP requests and serve static content.
+Application files are stored locally.
+
+Server 2 (Application Server):
+The application server runs the website's dynamic code and interacts with the database.
+It communicates with the web server to process requests.
+
+Server 3 (Database):
+MySQL is set up to store and manage the website's data.
+
+Load Balancer (HAproxy):
+HAproxy is added to distribute incoming requests across the web and application servers.
+This enhances performance, ensures high availability, and avoids overloading a single server.
+
+Additional Elements Explanation:
+
+Load Balancer (HAproxy):
+Added for load distribution, improved performance, and high availability.
+Balances traffic across multiple servers, preventing one server from becoming a bottleneck.
+
+Load Balancer Configuration:
+
+Distribution Algorithm:
+Configured with a Round Robin distribution algorithm.
+Round Robin evenly distributes requests among the available servers in a cyclic manner.
+
+Active-Active Setup:
+The load balancer is set up for an Active-Active configuration.
+In an Active-Active setup, all servers actively handle requests simultaneously, distributing the load evenly.
+
+Database Primary-Replica Cluster:
+
+Primary-Replica (Master-Slave) Cluster:
+Configured for high availability and data redundancy.
+The primary node (master) is responsible for both read and write operations.
+Replica nodes (slaves) replicate data from the primary and handle read operations, improving read scalability.
+Difference Between Primary and Replica:
+The primary node handles write operations, ensuring data consistency.
+Replica nodes handle read operations, distributing the read load and improving overall performance.
+
+Issues with the Infrastructure:
+
+Single Point of Failure (SPOF):
+The web and application servers are still potential single points of failure. Introducing redundancy and clustering in these components would help address this issue.
+
+Security Issues:
+No firewall and no HTTPS can expose the infrastructure to security threats.
+A firewall should be implemented to control incoming and outgoing traffic.
+HTTPS ensures secure communication between the user's browser and the web server.
+
+No Monitoring:
+Lack of monitoring tools makes it challenging to identify and address performance or security issues.
+Implement monitoring tools to track server health, performance metrics, and security incidents.

@@ -1,0 +1,62 @@
+0. Simple web stack
+
+Infrastructure Design:
+
+Server (IP: 8.8.8.8):	
+A physical or virtual machine responsible for hosting the entire web.
+This server is the central hub that handles requests and manages the different components.
+
+Domain Name (www.foobar.com):
+A user tries to accesses the website by typing www.foobar.com into their browser.
+The Domain Name System (DNS) then translates www.foobar.com to the server's IP address (8.8.8.8).
+
+DNS Record:
+The DNS record for www.foobar.com is a CNAME record, pointing to the server's IP (8.8.8.8).
+
+Web Server (Nginx):
+Nginx acts as a web server, handling HTTP requests and serving static content.
+It then listens for incoming requests on port 80 and routes them to appropriate components.
+
+Application Server:
+The application server handles dynamic content and executes the website's code.
+It tells the web server to process requests, often using a protocol like HTTP.
+
+Application Files (Code Base):
+The application files contain the website's code (e.g., HTML, CSS, JavaScript).
+These files are hosted on the server and are executed by the application server to create dynamic content.
+
+Database (MySQL):
+MySQL is used as the relational database management system.
+It stores and manages the website's data, such as user information, content, and configurations.
+
+Explanation of Roles:
+
+Server:
+The server is a computer system that provides services or resources to other computers (clients) over a network.
+
+Domain Name:
+A domain name is a human-readable address that translates to an IP address. It helps users access sites without remembering numerical IP addresses.
+
+DNS Record:
+The www in www.foobar.com is a subdomain, and the record type is a CNAME, indicating an alias for another domain.
+
+Web Server
+The web server handles HTTP requests, serves static content, and can act as a reverse proxy. Nginx, in this case, plays this role.
+
+Application Server:
+The application server executes dynamic code, interacts with databases, and generates content for the web server to deliver to users.
+
+Database:
+The database stores and manages structured data. MySQL, is a relational database used for storing website-related information.
+
+Issues with the Infrastructure:
+
+Single Point of Failure (SPOF):
+The entire infrastructure relies on a single server. If it fails, the website becomes unavailable.
+
+Downtime During Maintenance:
+When deploying new code, the web server needs to be restarted, causing downtime.
+
+Scaling Challenges:
+This infrastructure may struggle to handle a sudden increase in traffic. To scale.
+

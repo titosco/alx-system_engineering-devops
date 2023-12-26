@@ -1,0 +1,26 @@
+Specifics About This Infrastructure:
+
+Firewall Purpose:
+
+    Firewalls serve the crucial role of safeguarding the network, particularly the web servers, against undesired and unauthorized users. They act as intermediaries between the internal and external networks, actively blocking incoming traffic that meets specified criteria for unwanted access.
+
+SSL Certificate Purpose:
+
+    The SSL certificate is deployed to encrypt the communication between web servers and the external network. This encryption ensures protection against man-in-the-middle attacks (MITM) and prevents network sniffers from intercepting and deciphering traffic, thus safeguarding sensitive information. SSL certificates uphold privacy, data integrity, and secure identification.
+
+Monitoring Clients Purpose:
+
+    Monitoring clients play a vital role in overseeing both servers and the external network. They analyze server performance and operations, assess overall health, and promptly alert administrators in the event of unexpected server behavior. Monitoring tools observe servers closely, offering key metrics on server operations to administrators. They perform automated tests on server accessibility, measure response times, and provide alerts for issues like corrupt or missing files, security vulnerabilities, and other potential concerns.
+
+Issues With This Infrastructure:
+
+    SSL Termination at Load Balancer:
+        Terminating SSL at the load balancer level can lead to unencrypted traffic between the load balancer and web servers, posing a security risk.
+
+    Single MySQL Server:
+        Relying on a single MySQL server is problematic as it lacks scalability and introduces a potential single point of failure for the entire web infrastructure.
+
+    Identical Server Components:
+        Deploying servers with identical components creates contention for resources like CPU, memory, and I/O. This contention can result in poor performance and complicate the troubleshooting process. Such a setup is not easily scalable and may impede the efficient allocation of resources.
+
+
