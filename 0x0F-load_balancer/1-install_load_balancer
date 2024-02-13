@@ -41,7 +41,7 @@ frontend titosco-tech-frontend
 backend titosco-tech-backend
     balance roundrobin
     server 469316-web-01 54.237.57.48:80 check
-    server 469316-web-02 54.145.241.161:80 check
+    server 469316-web-02 54.90.23.161:80 check
 "
 
 # shellcheck disable=SC2154
