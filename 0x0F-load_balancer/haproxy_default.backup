@@ -1,0 +1,17 @@
+
+defaults
+  mode http
+  timeout client 15s
+  timeout connect 10s
+  timeout server 15s
+  timeout http-request 10s
+
+frontend titosco-tech-frontend
+    bind *:80
+    default_backend titosco-tech-backend
+
+backend titosco-tech-backend
+    balance roundrobin
+    server 469316-web-01 54.237.57.48 check
+    server 469316-web-02 54.145.241.161 check
+
