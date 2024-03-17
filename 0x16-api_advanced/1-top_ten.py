@@ -1,26 +1,28 @@
 
 #!/usr/bin/python3
-'''
-    this module contains the function top_ten
-'''
+'''Get top 10 hot posts'''
+import pprint
 import requests
-from sys import argv
+
+BASE_URL = 'http://reddit.com/r/{}/hot.json'
 
 
 def top_ten(subreddit):
-    '''
-        returns the top ten posts for a given subreddit
-    '''
-    user = {'User-Agent': 'Lizzie'}
-    url = requests.get('https://www.reddit.com/r/{}/hot/.json?limit=10'
-                       .format(subreddit), headers=user).json()
-    try:
-        for post in url.get('data').get('children'):
-            print(post.get('data').get('title'))
-    except Exception:
+    '''Get top 10 hot posts'''
+    headers = {'User-agent': 'Unix:0-subs:v1'}
+    response = requests.get(BASE_URL.format(subreddit),
+                            headers=headers)
+
+    # Check for 404 status code
+    if response.status_code >= 300:
         print(None)
+        return
 
+    data = response.json().get('data', {}).get('children', {})
+    if response.status_code != 200 or not data:
+        print(None)
+        return
 
-if __name__ == "__main__":
-    top_ten(argv[1])
+    for post in data[0:10]:
+        print(post.get('data', {}).get('title'))
 
