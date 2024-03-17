@@ -1,25 +1,17 @@
 
 #!/usr/bin/python3
-'''
-    this module contains the function number_of_subscribers
-'''
+'''Get number of reddit channel subscribers'''
 import requests
-from sys import argv
+
+BASE_URL = 'http://reddit.com/r/{}/about.json'
 
 
 def number_of_subscribers(subreddit):
-    '''
-        returns the number of subscribers for a given subreddit
-    '''
-    user = {'User-Agent': 'Lizzie'}
-    url = requests.get('https://www.reddit.com/r/{}/about.json'
-                       .format(subreddit), headers=user).json()
-    try:
-        return url.get('data').get('subscribers')
-    except Exception:
+    '''Gets number of reddit subscribers'''
+    headers = {'User-agent': 'Unix:0-subs:v1'}
+    response = requests.get(BASE_URL.format(subreddit),
+                            headers=headers)
+    if response.status_code != 200:
         return 0
-
-
-if __name__ == "__main__":
-    number_of_subscribers(argv[1])
+    return response.json().get('data', {}).get('subscribers', 0)
 
