@@ -41,11 +41,11 @@ frontend titosco-frontend
         default_backend titosco-backend
 
 frontend titosco-frontend-https
-        bind *:443 ssl crt /etc/haproxy/certs/clickviral.tech.pem
+i        bind *:443 ssl crt /etc/haproxy/certs/www.titosco.tech.pem
         http-request set-header X-Forwarded-Proto https
         default_backend titosco-backend
 
 backend titosco-backend
         balance roundrobin
-        server 469316-web-01 54.237.57.48:80 check
-        server 469316-web-02 54.90.23.161:80 check
+        server 469316-web-01 54.236.45.211:80 check
+        server 469316-web-02 100.25.140.133:80 check
